@@ -1,0 +1,43 @@
+[
+    {
+        "id": "coding",
+        "name": "Coding",
+        "headerColour": "linear-gradient(90deg,rgb(42,181,227),rgb(11,146,191))",
+        "description": "Learn how to build your very own website!",
+        "image": "/images/headerImages/CodingBanner1.png",
+        "imageTab": "/images/headerImages/CodingBanner1.png",
+        "imageMob": "/images/headerImages/CodingBanner1.png",
+        "buttons": [
+            {
+                "id": "coding-introduction",
+                "image": "/images/buttonImages/intro.svg",
+                "text": "An Introduction to what code is, what it can be used for and why it's an important skill for the future"
+            },
+            {
+                "id": "robotics",
+                "image": "/images/buttonImages/robotics.svg",
+                "text": "Dive into the world of robotics and learn the science behind what makes some of the worlds most powerful robots"
+            },
+            {
+                "id": "artificial-intelligence",
+                "image": "/images/buttonImages/ai.svg",
+                "text": "Dive into the world of robotics and learn the science behind what makes some of the worlds most powerful robots"
+            },
+            {
+                "id": "web-development",
+                "image": "/images/buttonImages/web.svg",
+                "text": "You've used them hundreds of time, now it's time to learn how websites are built!"
+            },
+            {
+                "id": "game-development",
+                "image": "/images/buttonImages/games.svg",
+                "text": "Ever played a video game and wondered exactly what is going on behind the screen? well now you can!"
+            },
+            {
+                "id": "app-development",
+                "image": "/images/buttonImages/apps.svg",
+                "text": "Facebook, Twitter, Instagram and Uber! if you've used these, then you've already got an idea of what app dev is!"
+            }
+        ]
+    }
+]

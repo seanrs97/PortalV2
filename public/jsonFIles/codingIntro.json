@@ -1,0 +1,406 @@
+[
+    {
+        "id": "coding-introduction",
+        "name": "Introduction to Coding",
+        "headerColour": "linear-gradient(90deg,rgb(42,181,227),rgb(11,146,191))",
+        "description": "Welcome to your Introduction to Coding!",
+        "image": "/images/headerImages/CodingBanner1.png",
+        "imageTab": "/images/headerImages/CodingBanner1.png",
+        "imageMob": "/images/headerImages/CodingBanner1.png",
+        "content": [
+            {
+                "id": "intro-text",
+                "image": "/images/mainContentImages/codingImage1.png",
+                "text": "Coding is all around us! It’s the way we interact with technology, and the results are everywhere to see!"
+            },
+            {
+                "id": "code-electricity",
+                "image": "/images/mainContentImages/codingImage2.png",
+                "text": "Nowadays, almost everything that is powered by electricity uses code."
+            },
+            {
+                "id": "code-items",
+                "image": "/images/mainContentImages/codingImage3.png",
+                "text": "Personal items like: Smart Phones Smart Watches Smart Speakers"
+            },
+            {
+                "id": "code-home-appliances",
+                "image": "/images/mainContentImages/codingImage4.png",
+                "text": "Things around the home like: Microwaves Fridges Washing machines"
+            },
+            {
+                "id": "code-automotive",
+                "image": "/images/mainContentImages/codingImage5.png",
+                "text": "Even big things like: Cars Trains Planes ...and rockets!"
+            },
+            {
+                "id": "code-tv",
+                "image": "/images/mainContentImages/robotics2.svg",
+                "text": "When you watch your favourite box set on your TV streaming service,"
+            },
+            {
+                "id": "code-tweet",
+                "image": "/images/mainContentImages/robotics2.svg",
+                "text": "Send a tweet, email or message"
+            },
+            {
+                "id": "code-console",
+                "image": "/images/mainContentImages/robotics2.svg",
+                "text": "When you play on your latest games console."
+            },
+            {
+                "id": "code-microwave",
+                "image": "/images/mainContentImages/robotics2.svg",
+                "text": "Or even warm up your dinner in the microwave."
+            },
+            {
+                "id": "code-lines",
+                "image": "/images/mainContentImages/robotics2.svg",
+                "text": "It happens because of lines of code."
+            },
+            {
+                "id": "code-rely",
+                "image": "/images/mainContentImages/robotics2.svg",
+                "text": "They all rely on code to make them work."
+            } 
+        ],
+        "bannerOne": [
+            {
+                "id": "what-is-code-banner",
+                "image": "/images/headerImages/codingBanner1.png",
+                "text": "So what exactly is Code?"
+            }
+        ],
+        "content2": [
+            {
+                "id": "code-precice",
+                "image": "/images/mainContentImages/robotics2.svg",
+                "text": "Code is a precise set of instructions explaining exactly what you want the computer to do at any given moment. "
+            },
+            {
+                "id": "code-react",
+                "image": "/images/mainContentImages/robotics2.svg",
+                "text": "Computers need to know exactly how to react to things, whether clicking a button or tapping the screen."
+            },
+            {
+                "id": "code-direction",
+                "image": "/images/mainContentImages/robotics2.svg",
+                "text": "It’s like giving directions to someone on how to get somewhere."
+            },
+            {
+                "id": "code-consider",
+                "image": "/images/mainContentImages/robotics2.svg",
+                "text": "You don’t only need to give the directions, you also have to give solutions for other elements that need to be considered."
+            },
+            {
+                "id": "code-example",
+                "image": "/images/mainContentImages/robotics2.svg",
+                "text": "For example, what if there is a traffic jam? Or what if your car breaks down?"
+            },
+            {
+                "id": "code-circumstance",
+                "image": "/images/mainContentImages/robotics2.svg",
+                "text": "You need to tell the computer what to do in these circumstances and how to behave."
+            }
+
+        ],
+        "bannerTwo": [
+            {
+                "id": "types-of-languages",
+                "image": "/images/headerImages/codingBanner1.png",
+                "text": "What kind of languages are there?"
+            }
+        ],
+        "content3": [
+            {
+                "id": "java",
+                "mainHeader": "Java",
+                "image": "/images/mainContentImages/codingImage1.png",
+                "headingText1": "Popularity: ",
+                "headingText2": "Ease of Use: ",
+                "headingText3": "Uses: ",
+                "text1": "Very High",
+                "text2": "Moderate to Difficult",
+                "text3": [
+                    {
+                        "text": "Apps for Mac, Windows and Linux"
+                    },
+                    {
+                        "text": "Web Applications"
+                    },
+                    {
+                        "text": "Mobile"
+                    },
+                    {
+                        "text": "Embedded Systems"
+                    }
+                ]
+            },
+            {
+                "id": "python",
+                "mainHeader": "Python",
+                "image": "/images/mainContentImages/codingImage1.png",
+                "headingText1": "Popularity: ",
+                "headingText2": "Ease of Use: ",
+                "headingText3": "Uses: ",
+                "text1": "Very High",
+                "text2": "Easy to Moderate",
+                "text3": [
+                    {
+                        "text": "Web Applications"
+                    },
+                    {
+                        "text": "Artificial Intelligence"
+                    }
+                ]
+            },
+            {
+                "id": "c",
+                "mainHeader": "C / C# / C++",
+                "image": "/images/mainContentImages/codingImage1.png",
+                "headingText1": "Popularity: ",
+                "headingText2": "Ease of Use: ",
+                "headingText3": "Uses: ",
+                "text1": "Medium to High",
+                "text2": "Moderate to Difficult",
+                "text3": [
+                    {
+                        "text": "Windows Applications"
+                    },
+                    {
+                        "text": "Web Services"
+                    },
+                    {
+                        "text": "Hardware Drivers"
+                    },
+                    {
+                        "text": "Proprietary Services"
+                    }
+                ]
+            },
+            {
+                "id": "javascript",
+                "mainHeader": "JavaScript",
+                "image": "/images/mainContentImages/codingImage1.png",
+                "headingText1": "Popularity: ",
+                "headingText2": "Ease of Use: ",
+                "headingText3": "Uses: ",
+                "text1": "Very High",
+                "text2": "Moderate",
+                "text3": [
+                    {
+                        "text": "Local Applications"
+                    },
+                    {
+                        "text": "Web Applications"
+                    }
+                ]
+            },
+            {
+                "id": "visual-basic-net",
+                "mainHeader": "Visual Basic .Net",
+                "image": "/images/mainContentImages/codingImage1.png",
+                "headingText1": "Popularity: ",
+                "headingText2": "Ease of Use: ",
+                "headingText3": "Uses: ",
+                "text1": "Low",
+                "text2": "Moderate",
+                "text3": [
+                    {
+                        "text": "Web Applications"
+                    },
+                    {
+                        "text": "Windows Applications"
+                    }
+                ]
+            },
+            {
+                "id": "sql",
+                "mainHeader": "SQL",
+                "image": "/images/mainContentImages/codingImage1.png",
+                "headingText1": "Popularity: ",
+                "headingText2": "Ease of Use: ",
+                "headingText3": "Uses: ",
+                "text1": "Very High",
+                "text2": "Easy to Moderate",
+                "text3": [
+                    {
+                        "text": "Database Queries"
+                    }
+                ]
+            },
+            {
+                "id": "php",
+                "mainHeader": "PHP",
+                "image": "/images/mainContentImages/codingImage1.png",
+                "headingText1": "Popularity: ",
+                "headingText2": "Ease of Use: ",
+                "headingText3": "Uses: ",
+                "text1": "High",
+                "text2": "Easy",
+                "text3": [
+                    {
+                        "text": "Web Applications"
+                    }
+                ]
+            },
+            {
+                "id": "objective-c",
+                "mainHeader": "Objective C",
+                "image": "/images/mainContentImages/codingImage1.png",
+                "headingText1": "Popularity: ",
+                "headingText2": "Ease of Use: ",
+                "headingText3": "Uses: ",
+                "text1": "High",
+                "text2": "Difficult",
+                "text3": [
+                    {
+                        "text": "Mobile Applications"
+                    },
+                    {
+                        "text": "Apple IOS devices: iPhone, iPad"
+                    }
+                ]
+            },
+            {
+                "id": "swift",
+                "mainHeader": "Swift",
+                "image": "/images/mainContentImages/codingImage1.png",
+                "headingText1": "Popularity: ",
+                "headingText2": "Ease of Use: ",
+                "headingText3": "Uses: ",
+                "text1": "Medium",
+                "text2": "Moderate to Difficult",
+                "text3": [
+                    {
+                        "text": "Apple Mobile and Desktop Apps"
+                    },
+                    {
+                        "text": "Macbook"
+                    },
+                    {
+                        "text": "iPhone"
+                    },
+                    {
+                        "text": "iPad"
+                    }
+                ]
+            },
+            {
+                "id": "ruby",
+                "mainHeader": "Ruby",
+                "image": "/images/mainContentImages/codingImage1.png",
+                "headingText1": "Popularity: ",
+                "headingText2": "Ease of Use: ",
+                "headingText3": "Uses: ",
+                "text1": "High",
+                "text2": "Easy to Moderate",
+                "text3": [
+                    {
+                        "text": "Web Applications"
+                    },
+                    {
+                        "text": "Scripting"
+                    }
+                ]
+            },
+            {
+                "id": "perl",
+                "mainHeader": "Perl",
+                "image": "/images/mainContentImages/codingImage1.png",
+                "headingText1": "Popularity: ",
+                "headingText2": "Ease of Use: ",
+                "headingText3": "Uses: ",
+                "text1": "High",
+                "text2": "Easy to Moderate",
+                "text3": [
+                    {
+                        "text": "Local Applications"
+                    },
+                    {
+                        "text": "Web Applications"
+                    }
+                ]
+            }
+        ],
+        "navigation": [
+            {
+                "id": "coding",
+                "text": "Return to Coding",
+                "image": "/images/headerImages/codingBanner1.svg"
+            }
+        ],
+
+        "quiz": [
+            {
+                "id": "codingIntroductionQuiz1",
+                "name": "Coding Intro Quiz",
+                "questions": [
+                    {
+                        "text": "Which of these is a programming languages?",
+                        "type": "single_correct_answer",
+                        "answers": [
+                            {
+                                "id": 0,
+                                "text": "Amethyst",
+                                "correct": false
+                            },
+                            {
+                                "id": 1,
+                                "text": "Cordial",
+                                "correct": false
+                            },
+                            {
+                                "id": 2,
+                                "text": "Perl",
+                                "correct": true
+                            }
+                        ]
+                    },
+                    {
+                        "text": "Which of these languages is not used with Web Development?",
+                        "type": "single_correct_answer",
+                        "answers": [
+                            {
+                                "id": 0,
+                                "text": "C#",
+                                "correct": false
+                            },
+                            {
+                                "id": 1,
+                                "text": "Java",
+                                "correct": true
+                            },
+                            {
+                                "id": 2,
+                                "text": "JavaScript",
+                                "correct": false
+                            }
+                        ]
+                    },
+                    {
+                        "text": "Which is these statements would be the best to use with 10 conditions?",
+                        "type": "single_correct_answer",
+                        "answers": [
+                            {
+                                "id": 0,
+                                "text": "If / Else",
+                                "correct": false
+                            },
+                            {
+                                "id": 1,
+                                "text": "If / Else / Else If",
+                                "correct": false
+                            },
+                            {
+                                "id": 2,
+                                "text": "Switch",
+                                "correct": true
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]
