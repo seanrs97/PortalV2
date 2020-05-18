@@ -1,4 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Navigating around the Portal
+All Json files can be found in the JSON files folder located in the 'public' directory
+All Fetch requests are made in the Fetch folder in the 'Src' Directory
+All page templates can be found in the templates folder in the 'Src' Directory
+Pages are collected in the Gather pages folder located in the 'Pages' Folder in the 'Src' Directory
+
 
 ## Available Scripts
 
