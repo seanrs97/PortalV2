@@ -1,0 +1,38 @@
+[
+    {
+        "id": "3d-design",
+        "name": "3D Design",
+        "headerColour": "linear-gradient(90deg,rgb(87,178,142),rgb(60,157,82))",
+        "description": "Ever wanted to program your own robot? you can learn how to, here!",
+        "image": "/images/headerImages/Banner7.png",
+        "imageTab": "/images/headerImages/Banner7.png",
+        "imageMob": "/images/headerImages/Banner7.png",
+        "buttons": [
+            {
+                "id": "3d-introduction",
+                "image": "/images/buttonImages/3DIntro.svg",
+                "text": "What is 3D design? what can we do with it? find out here with our great introduction!"
+            },
+            {
+                "id": "3d-animation",
+                "image": "/images/buttonImages/3DAnimation.svg",
+                "text": "Learn about one of the fastest growing industies in computing, the magic of 3D animation!"
+            },
+            {
+                "id": "3d-modelling",
+                "image": "/images/buttonImages/3DModelling.svg",
+                "text": "A subject that is still new but has come so far in recent years, how useful will this be in the future?"
+            },
+            {
+                "id": "3d-software",
+                "image": "/images/buttonImages/3DSoftware.svg",
+                "text": "Ready to start building your own designs? you'll need to get familiar with the software first!"
+            },
+            {
+                "id": "3d-careers",
+                "image": "/images/buttonImages/3DCareers.svg",
+                "text": "Still interested in 3D? why not see what careers you could pursue in the future!"
+            }
+        ]
+    }
+]

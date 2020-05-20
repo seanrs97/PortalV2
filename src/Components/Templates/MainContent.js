@@ -1,12 +1,20 @@
 import React  from "react";
 import styled from "styled-components";
 
+import sal from "sal.js";
+import '../../../node_modules/sal.js/dist/sal.css';
+
 class MainContent extends React.Component {
     constructor(props){
         super(props);
         this.state = {
 
         }
+    }
+    componentDidMount(){
+        sal({
+            once: false,
+        });
     }
     render(){
         return (

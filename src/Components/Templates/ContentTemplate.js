@@ -15,6 +15,8 @@ import NextSteps from "./NextSteps.js";
 
 
 class ContentTemplate extends React.Component {
+    targetElement = null;
+
     constructor(props){
         super(props);
         this.state = {
@@ -42,7 +44,6 @@ class ContentTemplate extends React.Component {
                 <MainContent content2 = {this.props.content2}/>
                 <Banner bannerTwo = {this.props.bannerTwo}/>
                 <MainContent content3 = {this.props.content3}/>
-
                 <Quiz quiz = {this.props.quiz} />
 
                 <NextSteps 
