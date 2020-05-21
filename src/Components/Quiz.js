@@ -1,3 +1,16 @@
+// To find where data is being pulled from, check ComponentDidMount
+// To find how questions are being displayed, check the DisplayQuestions method
+// To find how the quiz is being submitted, check the SubmitQuiz method. >> Note this is just a mock up and isn't in use currently
+
+// To find the JSON file for the quiz, go to the public folder and then jsonfiles/example-quiz.json
+
+// To find the HTML is being rendered to the UI, check the Render Method
+// To find any styles, check the Styled components at the bottom of the page
+
+
+
+
+
 import React from "react";
 import styled from "styled-components";
 import IsEmpty from "./IsEmpty";
