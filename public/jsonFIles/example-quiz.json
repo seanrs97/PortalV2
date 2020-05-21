@@ -11,34 +11,41 @@
           "answers": [
             {
               "id": 0,
-              "text": "The UK",
-              "correct": true
+              "text": "The UK"
             },
             {
               "id": 1,
-              "text": "Antarctica",
-              "correct": false
+              "text": "Antarctica"
+            },
+            {
+              "id": 2,
+              "text": "Jeruselem"
+            },
+            {
+              "id": 3,
+              "text": "Australia"
             }
           ]
         },
         {
-          "text": "How big is the Earth?",
+          "text": "How many continents are there?",
           "type": "MULTIPLE_CORRECT_ANSWERS",
           "answers": [
             {
               "id": 1,
-              "text": "Large",
-              "correct": false
+              "text": "4"
             },
             {
               "id": 0,
-              "text": "Small",
-              "correct": false
+              "text": "7"
             },
             {
               "id": 2,
-              "text": "Very Extremely Big",
-              "correct": true
+              "text": "8"
+            },
+            {
+              "id": 3,
+              "text": "12"
             }
           ]
         }

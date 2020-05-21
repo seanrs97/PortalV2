@@ -1,11 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import IsEmpty from "./IsEmpty";
+import Summary from "./Summary";
 
 import QuizImage1 from "../Images/SVG/quiz-wave-1.svg";
 import QuizImage2 from "../Images/SVG/quiz-wave-2.svg";
-
-import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 
 class Quiz extends React.Component {
     constructor(props){
@@ -23,11 +22,6 @@ class Quiz extends React.Component {
              numberOfAnsweredQuestions: 0,
              currentQuestionIndex: 0,
              score: 0,
-             correctAnswers: 0,
-             wrongAnswers: 0,
-             hints: 5,
-             fiftyFifty: 2,
-             usedFiftyFifty: false,
              nextButtonDisabled: false, 
              previousButtonDisabled: true,
              previousRandomNumber: [],
@@ -48,12 +42,11 @@ class Quiz extends React.Component {
              homeAppear: "",
              doesQuizExist: "",
              questionDisplay: "",
-             showTimeMessage: "translateX(-100%)"
+             showTimeMessage: "translateX(-100%)",
 
-            //  this.interval = null;
-            //  this.correctSound = React.createRef();
-            //  this.wrongSound = React.createRef();
+             answeredQuestions: []
         }
+        this.interval = null
     }
     async componentDidMount(){
         const quizData = await (await (fetch("/jsonFiles/example-quiz.json"))).json();
@@ -99,18 +92,10 @@ class Quiz extends React.Component {
             nextQuestion = questions[currentQuestionIndex + 1];
             previousQuestion = questions[currentQuestionIndex - 1];
 
-            const correctAnswer = currentQuestion.answers;
-
-            correctAnswer.map((ans) => {
-                console.log(ans.correct);
-            })
-
-            const answer = currentQuestion.answer;
             this.setState({ 
                 currentQuestion, 
                 nextQuestion,
                 previousQuestion,
-                answer,
                 previousRandomNumber: [],
             }, () => {
                 this.showOptions();
@@ -122,38 +107,15 @@ class Quiz extends React.Component {
         options.forEach(option => {
             option.style.visibility = "visible";
         });
-        this.setState({
-            usedFiftyFifty: false,
-            optionDisabled: true,
-            backgroundChange: "#23758b"
-        })
     }
     startGame = () => {
         let {currentQuestionIndex} = this.state;
-        let questions;
-        let currentQuestion;
-        let nextQuestion;
-        let previousQuestion;
-        let answer;
 
-        if(this.state.questions === undefined || this.state.questions === ""){
-            questions = [
-                {
-                    "default question": "default answer", 
-                    "default question 2": "default answer"
-                }
-            ];
-            currentQuestion = {"default question": "default question 2"};
-            nextQuestion = {"default question": "default question 2"};
-            previousQuestion = {"default question": "default question 2"};
-            answer = "default answer";
-        } else {
-            questions = this.state.questions;
-            currentQuestion = this.state.questions[currentQuestionIndex];
-            nextQuestion = this.state.questions[currentQuestionIndex + 1];
-            previousQuestion = this.state.questions[currentQuestionIndex - 1];
-            answer = this.state.questions[currentQuestionIndex].answer;
-        }
+        let questions = this.state.questions;
+        let currentQuestion = this.state.questions[currentQuestionIndex];
+        let nextQuestion = this.state.questions[currentQuestionIndex + 1];
+        let previousQuestion = this.state.questions[currentQuestionIndex - 1];
+        let answer = this.state.questions[currentQuestionIndex].answer;
         
         // Sets the questions data to state, so they can be used throughout the rest of this component
         if(questions.length === 0 || questions === undefined || currentQuestion.length === 0 || currentQuestion === undefined){
@@ -217,21 +179,202 @@ class Quiz extends React.Component {
         }, 800);
         this.startGame();
         this.startTimer();
-        this.setState({
-            hints: 5,
-            fiftyFifty: 2
-        });
         if(this.state.currentQuestionIndex !== 0){
             this.resetQuiz();
         }
+    }
+    resetQuiz = () => { 
+        clearInterval(this.interval);
+        this.showOptions();
+        this.setState({
+            showQuestions: "block",
+            currentQuestionIndex: 0,
+            currentQuestion: this.state.questions[0],
+            nextQuestion: this.state.questions[0 + 1],
+            answer: this.state.questions[0].answer,
+            previousQuestion: undefined,
+            endNumOfQuestions: 0,
+            endNumOfAnsweredQuestions: 0,
+            success: "",
+            successMessage: "",
+            score: 0,
+            endScore: 0,
+            showSummary: "dissapear 1.2s linear forwards",
+            displayQuiz: "translateX(0) scale(1)",
+            showConfetti: "none"
+        });
+        this.startTimer();
+    }
+    handleOptionClick = (e) => {
+        console.log(e.target.innerHTML.toLowerCase()); 
+
+        this.setState({
+            questionDisplay: "translateX(250%)",
+            answeredQuestions: [...this.state.answeredQuestions, e.target.innerHTML.toLowerCase()]
+        });
+        setTimeout(() => {
+            this.setState({
+                questionDisplay: "translateX(0)"
+            });
+            this.setState(prevState => ({
+                score: prevState.score + 1,
+                currentQuestionIndex: prevState.currentQuestionIndex +1,
+                numberOfAnsweredQuestions: prevState.numberOfAnsweredQuestions + 1,
+                answerMessage: ""
+            }), () => {
+                if(this.state.nextQuestion === undefined){
+                    this.end();
+                } else {
+                    this.displayQuestions(
+                        this.state.questions,
+                        this.state.currentQuestion,
+                        this.state.nextQuestion,
+                        this.state.previousQuestion
+                    )
+                }
+            })
+        }, 1000)
+    }
+    exitQuiz = () => {
+        this.setState({
+            showDialog: "none",
+            showOverlay: "none",
+            homeAppear: "appear 1s linear forwards",
+            displayQuiz: "translateX(0) scale(1)"
+        });
+    }
+
+    // THIS IS WHERE WE LIKELY SEND THE QUESTIONS BACK TO THE BACKEND
+    submitQuiz = () => {
+        // SEND THIS TO BACKEND TO BE CHECKED 
+        console.log("answered questions", this.state.answeredQuestions);
+
+        fetch("http://backendServer/api/quiz/answers", {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(this.state.answeredQuestions)
+            .then((result) => {
+                if(result.json().wonQuiz === true){
+                    console.log("Quiz Passed");
+                    this.setState({
+                        quizWon: true
+                    })
+                } else {
+                    console.log("Quiz Failed");
+                    this.setState({
+                        quizWon: false
+                    })
+                }
+            })
+        })
+    }
+
+    // SHOW PLAYERS RESULTS
+    end  = () => {
+        const { state } = this;
+        let playerResult = "failed";
+        let successMessage = "Please try again!";
+
+        console.log("answered questions", this.state.answeredQuestions);
+
+        const playerStats = {
+            score: state.score,
+            numberOfQuestions: state.numberOfQuestions,
+            numberOfAnsweredQuestions: state.numberOfAnsweredQuestions,
+        };
+
+        if(playerStats.score === playerStats.numberOfQuestions){
+            playerResult = "passed"
+            successMessage = "Well done, you can now move on!"
+            setTimeout(() => {
+                this.setState({
+                    showConfetti: "block"
+                });
+            }, 2400)
+        }
+        this.setState({
+            endScore: playerStats.score,
+            endNumOfQuestions: playerStats.numberOfQuestions,
+            endNumOfAnsweredQuestions: playerStats.numberOfAnsweredQuestions,
+            endNumberOfCorrectAnswers: playerStats.correctAnswers,
+            endNumberOfWrongAnswers: playerStats.wrongAnswers,
+            success: playerResult,
+            successMessage: successMessage,
+
+        });
+        setTimeout(() => {
+            this.setState({
+                showQuestions: "none",
+                numberOfAnsweredQuestions: 0,
+                currentQuestionIndex: playerStats.numberOfQuestions - 1,
+                time: {
+                    minutes: 0,
+                    seconds: 0
+                },
+                showSummary: "appear 1.2s linear forwards",
+                displayQuiz: "translateX(-100%) scale(0)"
+            });
+            clearInterval(this.interval);
+            console.log(this.state);
+        }, 1000)
+    }
+    // Used when the user selects 'no' from the dialog menu to resume the quiz
+    resumeQuiz = () => {
+        console.log("pause state", this.state.time.seconds)
+        this.setState({
+            showDialog: "none",
+            showOverlay: "none"
+        });
+        const currentTime = this.state.time.seconds + "000";
+        const resumeTime = parseInt(currentTime) ;
+
+        const countdownTime = Date.now() + resumeTime;
+        this.interval = setInterval(() => {
+            const now = new Date();
+            const distance = countdownTime - now;
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) /  (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000 );
+
+            if(distance < 0){
+                clearInterval(this.interval);
+                this.setState({
+                    time: {
+                        minutes: 0,
+                        seconds: 0
+                    }
+                }, () => {
+                    this.end();
+                });
+            } else {
+                this.setState({
+                    time: {
+                        minutes,
+                        seconds
+                    }
+                })
+            }
+        }, 1000);
+    }
+    quitQuiz = () => {
+        console.log("are you sure you want to quit this quiz?");
+        this.setState({
+            showDialog: "block",
+            showOverlay: "block",
+        });
+        clearInterval(this.interval);
+    }
+    returnHome = () => {
+        this.setState({
+            homeAppear: "appear 1s linear forwards"
+        })
     }
     render(){
         const {
             currentQuestion, 
             currentQuestionIndex, 
             numberOfQuestions, 
-            hints, 
-            fiftyFifty,
             time,
 
             endScore,
@@ -239,12 +382,9 @@ class Quiz extends React.Component {
             success,
             successMessage
         } = this.state;
-
-        console.log("state", this.state)
-        console.log(currentQuestion)
         return (
             <React.Fragment>
-                <ContentWrapper>
+                <ContentWrapper style = {{animation: this.state.doesQuizExist}}>
                     <Home style = {{animation: this.state.homeAppear}}>
                         <div className = "content-container">
                             <h1> Quiz </h1>
@@ -257,38 +397,52 @@ class Quiz extends React.Component {
                     </Home>
                     <QuizContainer>
                         <div style = {{position: "relative"}}>
+                        <DialogContainer style = {{display: this.state.showDialog, zIndex: "100000001"}}>
+                                <h1> Are you sure you want to quit the quiz? </h1>
+                                <button onClick = {this.exitQuiz}> Yes </button>
+                                <button onClick = {this.resumeQuiz}> No </button>
+                            </DialogContainer>
+                            <OverlayContainer style = {{display: this.state.showOverlay, zIndex: "100000000"}}/>
+
+
                             <Container>
-                                <div style = {{background: "orange"}}>
-                                    <h1> {currentQuestion.text} </h1>
+                                <span onClick = {this.quitQuiz} className = "quitQuiz" > X </span>
+                                <div className = "main-content-container">
+                                    <p style = {{transform: this.state.questionDisplay}} className = "numberOfQuestionsContainer">
+                                        <span className = "qNumber">
+                                            Question {currentQuestionIndex + 1} of {numberOfQuestions}
+                                        </span>
+                                    </p>
+                                    <H5 style = {{transform: this.state.questionDisplay}}> {currentQuestion.text} </H5>
+                                    <OptionsContainer>
+                                        {!!currentQuestion.answers && currentQuestion.answers.map((ans) =>
+                                            <button style = {{transform: this.state.questionDisplay}} disabled = {!this.state.optionDisabled} className = "option" onClick = {this.handleOptionClick}> {ans.text}</button>
+                                        )}
+                                    </OptionsContainer>
+                                    <LifelineContainer style = {{transform: this.state.questionDisplay}}>
+                                        <p>
+                                            <span className = "timer help-icon"></span>
+                                            <span className = "">{time.minutes}:{time.seconds}</span>
+                                        </p>
+                                    </LifelineContainer>
                                 </div>
-                                <OptionsContainer>
-                                    {!!currentQuestion.answers && currentQuestion.answers.map((ans) =>
-                                        <button> {ans.text}</button>
-                                    )}
-                                </OptionsContainer>
-
-
-
-
-
-                                
-                                {/* {!!this.state.quizData.questions && this.state.quizData.questions.map((question) => {
-                                    return (
-                                        <div>
-                                            <p>{question.text}</p>
-                                            <ul>
-                                                {!!question.answers && question.answers.map((answer) => 
-                                                    <ul>
-                                                        <li className = "option"> {answer.text} </li>
-                                                    </ul>
-                                                )}
-                                            </ul>
-                                        </div>
-                                    )
-                                })} */}
+                                <TimeMessage style = {{transform: this.state.showTimeMessage}}>
+                                    <h1> Time is Running Out! </h1>
+                                </TimeMessage>
                             </Container>
                         </div>
                     </QuizContainer>
+                    <SummaryContainer style = {{animation: this.state.showSummary}}>
+                        <Summary
+                                score = {endScore}
+                                numOfQuestions = {endNumOfQuestions}
+                                success = {success}
+                                successMessage = {successMessage}
+                                playAgain = {this.resetQuiz}
+                                homeReturn = {this.returnHome}
+                                showConfetti = {this.state.showConfetti}
+                            />
+                    </SummaryContainer>
                 </ContentWrapper>
             </React.Fragment>
         )
@@ -296,125 +450,19 @@ class Quiz extends React.Component {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const ContentWrapper = styled.div`
     position: relative;
     overflow: hidden;
-    margin-bottom: 20px;
     height: 100vh;
 `
-const QuizContainer = styled.div`
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 2;
-    transition: 1.2s all;
-`
+/* HOME PAGE STYLES */ 
 const Home = styled.div`
     position: absolute;
     width: 100%; 
     left:0;
     top: 0;
-    z-index: 3;
+    z-index: 10001;
+
 
     background: #23758b;
     height: 60vh;
@@ -476,6 +524,7 @@ const Home = styled.div`
             text-align: center;
             button{
                 border: 4px solid white;
+                cursor: pointer;
                 background: #3589a1;
                 border-radius: 8px;
                 font-size: 2.2em;
@@ -549,16 +598,25 @@ const Home = styled.div`
         height: 100vh;
     }
 `
+
+/* MAIN QUIZ STYLES */
+const QuizContainer = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+    transition: 1.2s all;
+`
 const Container = styled.div`
     width: 97.15%;
     padding: 14px;
     transition: 1.2s all;
     background: #23758b;
     color: white;
-    height: 100%;
+    height: 60vh;
     z-index: 100000;
     position: relative;
-    margin-bottom: 20px;
     .main-content-container{
         top: 30%;
         position: absolute;
@@ -656,9 +714,204 @@ const Container = styled.div`
         }
     }
     @media only screen and (max-width: 7000px){
-        height: 100%;
+        height: 100vh;
         width: 100%;
         padding: 0;
+    }
+`
+const OverlayContainer = styled.div`
+    position:absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0.35;
+    background: black;
+    z-index: 6665;
+    transition: .6s all;
+    display: none;
+`
+const DialogContainer = styled.div`
+    transform: translate(-50%,-50%);
+    position: absolute;
+    width: 30%;
+    padding: 40px 20px;
+    background: white;
+    color: black;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    z-index: 6666;
+    border-radius: 10px;
+    h1{
+        font-size: 1.4em;
+        color: black;
+        font-weight: 600;
+        font-family: sans-serif;
+        @media only screen and (max-width: 800px) and (min-width: 430px){
+            font-size: 1.6em
+        }
+        @media only screen and (min-width: 800px) and (max-width: 1100px){
+            font-size: 1.8em;
+        }
+        @media only screen and (min-width: 1100px) and (max-width: 2000px){
+            font-size: 2.2em;
+        }
+        @media only screen and (min-width: 2000px){
+            font-size: 2.8em;
+        }
+    }
+    button{
+        width: 35%;
+        margin: 10px;
+        border-radius: 5px;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        background: #e8e8e8;
+        font-size: 1.1em;
+        @media only screen and (max-width: 110px) and (min-width: 430px){
+            font-size: 1.2em;
+            width: 40%;
+            padding: 16px;
+        }
+        @media only screen and (min-width: 1100px) and (max-width: 2000px){
+            font-size: 1.4em;
+        }
+        @media only screen and (min-width: 2000px){
+            font-size: 1.7em;
+            padding: 20px;
+        }
+    }
+    @media only screen and (max-width: 430px){
+        width: 80%;
+    }
+    @media only screen and (max-width: 800px) and (min-width: 430px){
+        width: 60%;
+    }
+    @media only screen and (min-width: 800px) and (max-width: 1100px){
+        width: 48%;
+    }
+    @media only screen and (min-width: 1100px) and (max-width: 2000px){
+        width: 40%;
+    }
+    @media only screen and (min-width: 2000px){
+        width: 35%;
+    }
+`
+const LifelineContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    transition: 1s all;
+    margin: 0 auto;
+    color: white;
+    margin-top: 30px;
+    p{
+        padding: 14px 20px;
+        position: relative;
+        text-align: center;
+        background: rgba(71,187,230,0.6);
+        margin: 0 8px;
+        border-radius: 4px;
+        span{
+            color: white;
+            &:nth-child(1){
+                @media only screen and (max-width: 1050px) and (min-width: 574px){
+                    margin-right: 8px;
+                }
+                @media only screen and (max-width: 1500px) and (min-width: 1050px){
+                    margin-right: 10px;
+                }
+            }
+            @media only screen and (max-width: 1500px) and (min-width: 1050px){
+                font-size: 1.6em;
+            }
+        }
+        &:nth-child(1){
+            flex-grow: 1.5;
+            @media only screen and (max-width: 800px) and (min-width: 430px){
+                flex-grow: 0.8;
+            }
+            @media only screen and (max-width: 1050px) and (min-width: 800px){
+                flex-grow: 0.8;
+            }
+            @media only screen and (min-width: 1050px) and (max-width: 1500px){
+                flex-grow: 0.6;
+            }
+            @media only screen and (min-width: 1500px) and (max-width: 2000px){
+                flex-grow: 0.85;
+            }
+            @media only screen and (min-width: 2000px){
+                flex-grow: 0.7;
+            }
+        }
+        @media only screen and (max-width: 1050px) and (min-width: 574px){
+            font-size: 1.2em;
+            padding: 20px 16px;
+        }
+        @media only screen and (max-width: 1500px) and (min-width: 1050px){
+            padding: 25px 40px;
+
+            font-size: 1.2em;
+        }
+        @media only screen and (min-width: 1500px) and (max-width: 2000px){
+            font-size: 1.8em;
+            padding: 30px 50px;
+        }
+        @media only screen and (min-width: 2000px){
+            font-size: 3em;
+            padding: 50px 80px;
+        }
+    }
+    @media only screen and (max-width: 800px) and (min-width: 574px){
+        width: 80%;
+    }
+    @media only screen and (max-width: 1050px) and (min-width: 800px){
+        margin-top: 60px;
+        width: 100%;
+    }
+    @media only screen and (min-width: 1050px) and (max-width: 1500px){
+        margin-top: 100px;
+        width: 100%;
+    }
+    @media only screen and (min-width: 1500px) and (max-width: 2000px){
+        width: 100%;
+        margin-top: 120px;
+    }
+    @media only screen and (min-width: 2000px){
+        width: 66%;
+        margin-top: 160px;
+    }
+`
+const H5 = styled.h5`
+    font-size: 2em;
+    margin-bottom: 20px;
+    line-height: 1.35em;
+    text-align: center;
+    padding: 0 20px;
+    transition: 1s all;
+    color: white;
+    margin-top: 20px;
+    @media only screen and (max-width: 800px) and (min-width: 574px){
+        font-size: 2.8em;
+        margin-top: 30px;
+    }
+    @media only screen and (max-width: 1050px) and (min-width: 800px){
+        font-size: 2.6em;
+        margin-top: 20px;
+    }
+    @media only screen and (min-width: 1050px) and (max-width: 1500px){
+        font-size: 3.4em;   
+        margin-top: 20px;
+    }
+    @media only screen and (min-width: 1500px) and (max-width: 2000px){
+        font-size: 4em;
+        margin-top: 20px;
+    }
+    @media only screen and (min-width: 2000px){
+        font-size: 6.4em;
+        margin-top: 35px;
     }
 `
 const OptionsContainer = styled.div`
@@ -725,5 +978,23 @@ const OptionsContainer = styled.div`
         grid-gap: 60px;
         margin-top: 60px;
     }
+`
+const TimeMessage = styled.div`
+    position: absolute;
+    bottom: 10%;
+    width: 100%;
+    transition: .3s all;
+    h1{
+        font-weight: 800;
+        font-size: 4em;
+    }
+`
+
+const SummaryContainer = styled.div`
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
 `
 export default Quiz;

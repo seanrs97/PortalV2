@@ -4,6 +4,8 @@ import {Route, Switch} from "react-router-dom";
 import HighLevelPage from "../Components/Templates/HighLevelPage.js";
 import ContentTemplate from "../Components/Templates/ContentTemplate.js";
 
+import queryString from "query-string";
+
 class FetchCodingIntro extends React.Component {
     constructor(props){
         super(props);
@@ -13,6 +15,7 @@ class FetchCodingIntro extends React.Component {
     }
     async componentDidMount(){
         const codingIntro = await (await (fetch("/jsonFiles/codingIntro.json"))).json();
+        
         this.setState({
             json: codingIntro[0],
             jsonNavigation: codingIntro[0].navigation,

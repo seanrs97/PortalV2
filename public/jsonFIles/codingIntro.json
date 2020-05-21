@@ -330,7 +330,6 @@
                 "image": "/images/headerImages/codingBanner1.svg"
             }
         ],
-
         "quiz": [
             {
                 "id": "codingIntroductionQuiz1",
@@ -400,6 +399,48 @@
                         ]
                     }
                 ]
+            }
+        ],
+        // Links, resources, careers and education
+        // No Images as of now 
+        // Varied grid layout with one covering the whole row
+
+        
+        "resources": [
+            {
+                "link": "https://www.codecademy.com/",
+                "text": "Codecademy",
+                "desc": "A fun way to educate people in coding and web development!",
+                "type": "interactive",
+                "heading": "watch_and_learn"
+            },
+            {
+                "link": "https://codeburst.io/i-want-to-learn-programming-but-i-dont-know-where-to-start-80dd2d55e1fd",
+                "text": "I want to program but don't know where to start",
+                "desc": "Struggling to find a way to get into programming? This article will probably help you!",
+                "type": "article",
+                "heading": "useful_links"
+            },
+            {
+                "link": "https://www.bitdegree.org/tutorials/how-to-code-for-beginners/",
+                "text": "How to code for Beginners",
+                "desc": "A great read for anybody who is just starting in the coding industry",
+                "type": "article",
+                "heading": "useful_links"
+            },
+            {
+                "link": "https://www.w3schools.com/",
+                "text": "W3Schools",
+                "desc": "A great platform for anything and everything web!",
+                "type": "interactive",
+                "heading": "watch_and_learn"
+            },
+            {
+                "link": "https://www.youtube.com/watch?v=hb7Q33ysCwI",
+                "text": "Coding is not Difficult - Bill Gates",
+                "desc": "An inspiration talk from Bill gates and others about programming and how anyone can do it when they put their mind to it!",
+                "type": "video",
+                "heading": "watch_and_learn"
             }
         ]
     }

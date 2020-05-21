@@ -7,6 +7,7 @@ import ScrollToTop from "./ScrollToTop.js";
 import Home from "./Pages/Home.js";
 import NavBar from "./NavBar.js";
 
+import ExampleGet from "./Fetch/ExampleGet.js";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <NavBar/>
             <div className = "content">
               <GatherPages/>
+              <ExampleGet/>
               <Route exact path = "/" component = {Home}/>
             </div>
           </ScrollToTop>
