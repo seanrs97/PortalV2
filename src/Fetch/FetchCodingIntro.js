@@ -15,7 +15,7 @@ class FetchCodingIntro extends React.Component {
     }
     async componentDidMount(){
         const codingIntro = await (await (fetch("/jsonFiles/codingIntro.json"))).json();
-        
+
         this.setState({
             json: codingIntro[0],
             jsonNavigation: codingIntro[0].navigation,
@@ -24,7 +24,8 @@ class FetchCodingIntro extends React.Component {
             content: codingIntro[0].content,
             content2: codingIntro[0].content2,
             content3: codingIntro[0].content3,
-            quiz: codingIntro[0].quiz
+            quiz: codingIntro[0].quiz,
+            resources: codingIntro[0].resources
         })
         console.log(this.state.quiz)
     }
@@ -54,6 +55,8 @@ class FetchCodingIntro extends React.Component {
                             
                             navImage = {this.state.json.image}
                             navigation = {this.state.jsonNavigation}
+
+                            resources = {this.state.resources}
                         />} />
                 </Switch>
             </div>

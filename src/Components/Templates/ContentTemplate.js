@@ -12,6 +12,7 @@ import MainContent from "./MainContent.js";
 import Banner from "./Banner.js";
 import Quiz from "../Quiz.js"
 import NextSteps from "./NextSteps.js";
+import Resources from "./Resources.js";
 
 
 class ContentTemplate extends React.Component {
@@ -29,6 +30,7 @@ class ContentTemplate extends React.Component {
         });
     }
     render(){
+        console.log(this.props)
         return (
             <div>
                 <Header
@@ -44,7 +46,10 @@ class ContentTemplate extends React.Component {
                 <MainContent content2 = {this.props.content2}/>
                 <Banner bannerTwo = {this.props.bannerTwo}/>
                 <MainContent content3 = {this.props.content3}/>
+
                 <Quiz quiz = {this.props.quiz} />
+
+                <Resources resources = {this.props.resources}/>
 
                 <NextSteps 
                     image = {this.props.navImage}

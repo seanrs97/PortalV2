@@ -401,46 +401,78 @@
                 ]
             }
         ],
-        // Links, resources, careers and education
-        // No Images as of now 
-        // Varied grid layout with one covering the whole row
-
-        
         "resources": [
             {
-                "link": "https://www.codecademy.com/",
-                "text": "Codecademy",
-                "desc": "A fun way to educate people in coding and web development!",
-                "type": "interactive",
-                "heading": "watch_and_learn"
-            },
-            {
-                "link": "https://codeburst.io/i-want-to-learn-programming-but-i-dont-know-where-to-start-80dd2d55e1fd",
-                "text": "I want to program but don't know where to start",
-                "desc": "Struggling to find a way to get into programming? This article will probably help you!",
-                "type": "article",
-                "heading": "useful_links"
-            },
-            {
-                "link": "https://www.bitdegree.org/tutorials/how-to-code-for-beginners/",
-                "text": "How to code for Beginners",
-                "desc": "A great read for anybody who is just starting in the coding industry",
-                "type": "article",
-                "heading": "useful_links"
-            },
-            {
-                "link": "https://www.w3schools.com/",
-                "text": "W3Schools",
-                "desc": "A great platform for anything and everything web!",
-                "type": "interactive",
-                "heading": "watch_and_learn"
-            },
-            {
-                "link": "https://www.youtube.com/watch?v=hb7Q33ysCwI",
-                "text": "Coding is not Difficult - Bill Gates",
-                "desc": "An inspiration talk from Bill gates and others about programming and how anyone can do it when they put their mind to it!",
-                "type": "video",
-                "heading": "watch_and_learn"
+                "title": "Resources",
+                "text": "Still hungry to learn more? We've provided you with a list of useful links to help you on you kick start your coding career. We have seperated our resources into 3 categories to help you find the right resources for you!",
+                "watch_and_learn": [
+                    {
+                        "link": "https://www.codecademy.com/",
+                        "text": "Codecademy",
+                        "desc": "A fun way to educate people in coding and web development!",
+                        "type": "interactive"
+                    },
+                    {
+                        "link": "https://www.w3schools.com/",
+                        "text": "W3Schools",
+                        "desc": "A great platform for anything and everything web!",
+                        "type": "interactive"
+                    },
+                    {
+                        "link": "https://www.youtube.com/watch?v=hb7Q33ysCwI",
+                        "text": "Coding is not Difficult ",
+                        "desc": "An inspiration talk from Bill gates and others",
+                        "type": "video"
+                    },
+                    {
+                        "link": "https://css-tricks.com/",
+                        "text": "CSS Tricks",
+                        "desc": "Learn about animations, layouts, UI designs, transitions and much more!",
+                        "type": "interactive"
+                    },
+                    {
+                        "link": "https://scratch.mit.edu/",
+                        "text": "Scratch",
+                        "desc": "Scratch teaches you the fundamental basics that surround programming in a fun and interactive way!",
+                        "type": "interactive"
+                    }
+
+                ],
+                "useful_links": [
+                    {
+                        "link": "https://codeburst.io/i-want-to-learn-programming-but-i-dont-know-where-to-start-80dd2d55e1fd",
+                        "text": "I want to program but don't know where to start",
+                        "desc": "Struggling to find a way to get into programming? This article will probably help you!",
+                        "type": "article"
+                    },
+                    {
+                        "link": "https://www.bitdegree.org/tutorials/how-to-code-for-beginners/",
+                        "text": "How to code for Beginners",
+                        "desc": "A great read for anybody who is just starting in the coding industry"
+                    },
+                    {
+                        "link": "https://codeburst.io/i-want-to-learn-programming-but-i-dont-know-where-to-start-80dd2d55e1fd",
+                        "text": "I want to program but don't know where to start",
+                        "desc": "Struggling to find a way to get into programming? This article will probably help you!",
+                        "type": "article"
+                    },
+                    {
+                        "link": "https://www.bitdegree.org/tutorials/how-to-code-for-beginners/",
+                        "text": "How to code for Beginners",
+                        "desc": "A great read for anybody who is just starting in the coding industry"
+                    },
+                    {
+                        "link": "https://codeburst.io/i-want-to-learn-programming-but-i-dont-know-where-to-start-80dd2d55e1fd",
+                        "text": "I want to program but don't know where to start",
+                        "desc": "Struggling to find a way to get into programming? This article will probably help you!",
+                        "type": "article"
+                    },
+                    {
+                        "link": "https://www.bitdegree.org/tutorials/how-to-code-for-beginners/",
+                        "text": "How to code for Beginners",
+                        "desc": "A great read for anybody who is just starting in the coding industry"
+                    }
+                ]
             }
         ]
     }
