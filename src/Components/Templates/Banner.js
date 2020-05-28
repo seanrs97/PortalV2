@@ -12,13 +12,15 @@ class Banner extends React.Component {
         return (
             <HalfwayBanner>
                 {!!this.props.bannerOne && this.props.bannerOne.map((banner) =>
-                    <div style = {{backgroundImage: `url(${banner.image})`}} key = {banner.id}>
-                        <p> {banner.text} </p>
+                    <div style = {{background: banner.colour}} key = {banner.id}>
+                        <h1> {banner.text} </h1>
+                        <p> {banner.desc} </p>
                     </div>
                 )}
                 {!!this.props.bannerTwo && this.props.bannerTwo.map((banner) =>
-                    <div style = {{backgroundImage: `url(${banner.image})`}}key = {banner.id}>
-                        <p> {banner.text} </p>
+                    <div style = {{background: banner.colour}} key = {banner.id}>
+                        <h1> {banner.text} </h1>
+                        <p> {banner.desc} </p>
                     </div>
                 )}
             </HalfwayBanner>
@@ -30,27 +32,50 @@ const HalfwayBanner = styled.div`
     margin-bottom: 20px;
     position: relative;
     div{
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-attachment: fixed;
+        padding: 30px 40px;
+        @media only screen and (min-width: 1900px) and (max-width: 2350px){
+            padding: 40px 50px;
+        }
+        @media only screen and (min-width: 2350px){
+            padding: 50px 60px;
+        }
+    }
+    h1{
+        width: 100%;
+        font-size: 4em;
+        line-height: 1.2em;
+        color: white;
+        font-weight: 800;
+        width: 90%;
+        margin-bottom: 12px;
+        @media only screen and (min-width: 1900px) and (max-width: 2350px){
+            font-size: 7em;
+        }
+        @media only screen and (min-width: 2350px){
+            font-size: 6em;
+        }
+        @media only screen and (max-width: 600px) and (min-width: 500px){
+            font-size: 3.6em;
+        }
+        @media only screen and (max-width: 500px) and (min-width: 400px){
+            font-size: 3.4em;
+        }
+        @media only screen and (max-width: 400px){
+            font-size: 2.4em;
+        }
     }
     p{
-        padding: 130px 0;
-        width: 100%;
-        text-align: center;
-        font-size: 2.4em;
-        text-shadow: 4px 4px 4px #545454;
         color: white;
-        font-weight: 600;
-        @media (min-width: 2000px){
-            font-size: 3.2em;
-            padding: 180px 0;
+        font-size: 1em;
+        width: 70%;
+        @media only screen and (min-width: 1900px) and (max-width: 2350px){
+            font-size: 1.5em;
         }
-        @media (max-width: 500px){
-            font-size: 1.8em;
-            padding: 100px 0;
-            width: 90%;
-            margin: 0 auto;
+        @media only screen and (min-width: 2350px){
+            font-size: 1.7em;
+        }
+        @media only screen and (max-width: 600px){
+            width: 88%;
         }
     }
 `

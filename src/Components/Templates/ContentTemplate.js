@@ -29,8 +29,27 @@ class ContentTemplate extends React.Component {
             once: false,
         });
     }
+    handleScroll = () => {
+        
+    }
+    componentDidMount(){
+        window.onscroll = function(){
+            if(window.pageYOffset === 0){
+                console.log("at the top innit");
+            }
+        }
+    }
+    componentWillUnmount(){
+        window.onscroll = null;
+    }
+    handleScroll = (event) => {
+        const target = event.target;
+
+        if(target.scrollHeight - target.scrollTop === target.clientHeight){
+            console.log("CUNT")
+        }
+    }
     render(){
-        console.log(this.props)
         return (
             <div>
                 <Header
@@ -47,7 +66,7 @@ class ContentTemplate extends React.Component {
                 <Banner bannerTwo = {this.props.bannerTwo}/>
                 <MainContent content3 = {this.props.content3}/>
 
-                <Quiz quiz = {this.props.quiz} />
+                <Quiz style = {{overflowY: "scroll"}} onScroll = {this.handleScroll} quiz = {this.props.quiz} quizColour = {this.props.quizColour}/>
 
                 <Resources resources = {this.props.resources}/>
 

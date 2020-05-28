@@ -11,7 +11,7 @@ class Fetch3dDesign extends React.Component {
         }
     }
     async componentDidMount(){
-        const codingIntro = await (await (fetch("/jsonFiles/3dDesign.json"))).json();
+        const codingIntro = await (await (fetch("/3dDesign.json"))).json();
         this.setState({
             json: codingIntro[0],
             buttons: codingIntro[0].buttons

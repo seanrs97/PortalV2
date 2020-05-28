@@ -11,7 +11,7 @@ class FetchAnimation extends React.Component {
         }
     }
     async componentDidMount(){
-        const codingIntro = await (await (fetch("/jsonFiles/animation.json"))).json();
+        const codingIntro = await (await (fetch("/animation.json"))).json();
         this.setState({
             json: codingIntro[0],
             buttons: codingIntro[0].buttons

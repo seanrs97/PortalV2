@@ -2,12 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
 
-import BadgeBlue from "./Images/BadgeBlue.svg";
-import BadgeGreen from "./Images/BadgeGreen.svg";
-import BadgeRed from "./Images/BadgeRed.svg";
-import BadgeOrange from "./Images/BadgeOrange.svg";
+import BadgeBlue from "../Images/BadgeBlue.svg";
+import BadgeGreen from "../Images/BadgeGreen.svg";
+import BadgeRed from "../Images/BadgeRed.svg";
+import BadgeOrange from "../Images/BadgeOrange.svg";
 
-import logo from "./Images/logo.svg";
+import logo from "../Images/logo.svg";
 
 class NavBar extends React.Component{
     constructor(props){

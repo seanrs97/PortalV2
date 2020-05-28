@@ -123,6 +123,7 @@ const ContentContainer = styled.div`
             @media only screen and (max-width: 480px){
                 margin-left: 0;
                 list-style: none;
+                padding-left: 0;
             }
         }
         .wrapper{
@@ -141,7 +142,7 @@ const ContentContainer = styled.div`
             font-size: 1.2em;
             width: 100%;
             align-items: center;
-            justify-content: center;
+            justify-content: left;
             @media only screen and (min-width: 1900px){
                 font-size: 1.8em;
             }
@@ -169,6 +170,16 @@ const ContentContainer = styled.div`
             width: 95%;
             display: block !important;
             text-align: center;
+        }
+        &:nth-of-type(even){
+            .content-text{
+                padding-right: 6px;
+            }
+        }
+        &:nth-of-type(odd){
+            .content-text{
+                padding-left: 6px;
+            }
         }
     }
 `

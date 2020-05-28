@@ -11,7 +11,7 @@ class FetchCoding extends React.Component {
         }
     }
     async componentDidMount(){
-        const codingIntro = await (await (fetch("/jsonFiles/coding.json"))).json();
+        const codingIntro = await (await (fetch("/coding.json"))).json();
         this.setState({
             json: codingIntro[0],
             buttons: codingIntro[0].buttons

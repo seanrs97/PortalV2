@@ -47,7 +47,6 @@ class Home extends React.Component{
                 <Banner backgroundImage = {imagesArray[this.state.currentImageIndex]}/>
                 <div style = {{ textAlign: "center"}}>
                     <H3> Start by selecting a topic! </H3>
-                    <h3 className = "getStartedMobile"> Pick your topic! </h3>
                     <BadgesContainer>
                         <Link to = "/core-topics/coding"><img src = {BadgeBlue} alt = {BadgeBlue}/></Link>
                         <Link to = "/core-topics/2d-design"><img src = {BadgeRed} alt = {BadgeRed}/></Link>
@@ -71,6 +70,10 @@ const Container = styled.div`
 const IntroContainer = styled.div`
     width: 90%;
     margin: 0 auto;
+    margin-top: 160px;
+    @media only screen and (max-width: 650px){
+        margin-top: 120px;
+    }
 `
 const LogoImage = styled.img`
     width: 65%;
@@ -90,10 +93,18 @@ const H5 = styled.h5`
 `
 const H3 = styled.h3`
     font-weight: 200;
-    font-size: 2em;
-    padding-bottom: 60px;
-    @media only screen and (max-width: 500px){
-        display: none;
+    font-size: 2.5em;
+    padding-bottom: 30px;
+    @media only screen and (max-width: 1500px) and (min-width: 800px){
+        font-size: 3em;
+        padding-bottom: 16px;
+    }
+    @media only screen and (max-width: 2000px) and (min-width: 1500px){
+        font-size: 4em;
+        padding-bottom: 24px;
+    }
+    @media only screen and (min-width: 2000px){
+        font-size: 5em;
     }
 `
 const Banner = styled.div`

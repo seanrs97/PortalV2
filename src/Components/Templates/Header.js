@@ -112,6 +112,7 @@ const ImageTextContainer = styled.div`
 `
 const H1 = styled.h1`
     font-size: 4em;
+    color: white;
 `
 const Stripe = styled.div`
     width: 115%;

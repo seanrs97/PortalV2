@@ -17,7 +17,7 @@ class Summary extends React.Component {
     }
     render(){
         return (
-            <Container>
+            <Container style = {{background: this.props.quizColour}}>
                 <div className = "content-container">
                     <div style = {{display: this.props.showConfetti}}>
                         <Confetti/>
@@ -27,12 +27,12 @@ class Summary extends React.Component {
 
                     <SuccessContainer>
                         <p> You have {this.props.success} </p>
-                        <p> {this.props.successMessage} </p>
+                        {/* <p> {this.props.successMessage} </p> */}
                     </SuccessContainer>
                 </div>
                 <ButtonContainer>
                     <button onClick = {this.props.playAgain}> Play again </button>
-                    <button onClick = {this.props.homeReturn}> Return </button>
+                    <button onClick = {this.props.homeReturn}> Move on! </button>
                 </ButtonContainer>
                 <img src = {QuizImage1} className = "top-quiz-wave" />
                 <img src = {QuizImage2} className = "bottom-quiz-wave"/>
@@ -42,7 +42,6 @@ class Summary extends React.Component {
 }
 
 const Container = styled.div`
-    background: #23758b;
     height: 100vh;
     padding: 14px;
     text-align: center;
@@ -50,7 +49,7 @@ const Container = styled.div`
     overflow: hidden;
     .content-container{
         position: absolute;
-        top: 50%;
+        top: 20%;
         left: 50%;
         transform: translate(-50%, -50%);
         @media only screen and (min-width: 1300px) and (max-width: 1500px){
@@ -60,7 +59,7 @@ const Container = styled.div`
             top: 25%;
         }
         @media only screen and (max-width: 768px) and (min-width: 350px){
-            top: 30%;
+            top: 20%;
         }
         @media only screen and (max-width: 350px){
             top: 30%;
@@ -73,16 +72,17 @@ const Container = styled.div`
             font-size: 4em;
         }
         @media only screen and (max-width: 800px) and (min-width: 430px){
-            font-size: 5.6em;
+            font-size: 5em;
         }
         @media only screen and (max-width: 1400px) and (min-width: 800px){
-            font-size: 8.5em;
+            font-size: 6em;
         }
         @media only screen and (min-width: 1400px) and (max-width: 2000px){
-            font-size: 10em;
+            font-size: 7.4em;
+            line-height: 1.2em;
         }
         @media only screen and (min-width: 2000px){
-            font-size: 15em;
+            font-size: 11.5em;
         }
     }
     h2{
@@ -93,13 +93,13 @@ const Container = styled.div`
             font-size: 2em;
         }
         @media only screen and (max-width: 800px) and (min-width: 430px){
-            font-size: 2.6em;
+            font-size: 2em;
         }
         @media only screen and (max-width: 1400px) and (min-width: 800px){
             font-size: 2.3em;
         }
         @media only screen and (min-width: 1400px) and (max-width: 2000px){
-            font-size: 2.8em;
+            font-size: 2.6em;
         }
         @media only screen and (min-width: 2000px){
             font-size: 3.8em;
@@ -163,19 +163,20 @@ const Container = styled.div`
 `
 const ButtonContainer = styled.div`
     position: absolute;
-    bottom: 20px;
+    top: 60%;
     width: 92.5%;
     text-align: center;
+    transform: translateY(-50%);
     button{
         text-align: center;
         margin: auto;
-        padding: 20px;
+        padding: 14px;
         border: none;
         background: #8bb7f6;
         cursor: pointer;
         color: white;
         border-radius: 10px;
-        font-size: 2em;
+        font-size: 1.6em;
         width: 30%;
         margin-top: 40px;
         transition: .5s all;
@@ -190,7 +191,7 @@ const ButtonContainer = styled.div`
             border: 4px solid white;
             background: rgba(121, 161, 219, 0.3);;
             border-radius: 8px;
-            font-size: 2.2em;
+            font-size: 1.6em;
             padding: 20px 50px;
             z-index: 2;
             position: relative;
@@ -210,15 +211,23 @@ const ButtonContainer = styled.div`
             padding: 50px;
         }
     }
-    @media only screen and (max-width: 2000px) and (min-width: 430px){
-        left: 50%;
+    @media only screen and (max-width: 850px){
+        top: 54%;
         width: 44%;
-        transform: translateX(-50%);
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    @media only screen and (max-width: 2000px) and (min-width: 850px){
+        left: 50%;
+        top: 60%;
+        width: 44%;
+        transform: translate(-50%, -50%);
         margin-bottom: 34px;
         z-index: 30000000000;
     }
     @media only screen and (min-width: 2000px){
         width: 40%;
+        top: 38%;
         z-index: 3000000;
         margin-bottom: 100px;
         left: 50%;

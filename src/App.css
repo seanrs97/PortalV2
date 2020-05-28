@@ -1,6 +1,7 @@
-, html, body{
+html, body{
     margin: 0;
     padding: 0;
+    scroll-snap-type: y mandatory;
   }
   .App{
     background: #e0e0e0;
@@ -18,6 +19,7 @@
     line-height: 1.75em;
     letter-spacing: 0.03em;
     font-weight: 800;
+    color: #595858;
   }
   p, a, span {
     font-weight: 450;
@@ -173,5 +175,21 @@
     100%{
       transform: translateX(0);
       height: 100vh;
+    }
+  }
+  @keyframes opacityShow {
+    0%{
+      opacity: 0
+    }
+    100%{
+      opacity: 1
+    }
+  }
+  @keyframes opacityHide {
+    0%{
+      opacity: 1
+    }
+    100%{
+      opacity: 0
     }
   }

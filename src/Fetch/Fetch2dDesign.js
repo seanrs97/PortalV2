@@ -11,7 +11,7 @@ class Fetch2dDesign extends React.Component {
         }
     }
     async componentDidMount(){
-        const codingIntro = await (await (fetch("/jsonFiles/2dDesign.json"))).json();
+        const codingIntro = await (await (fetch("/2dDesign.json"))).json();
         this.setState({
             json: codingIntro[0],
             buttons: codingIntro[0].buttons

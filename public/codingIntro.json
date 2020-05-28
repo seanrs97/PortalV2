@@ -68,7 +68,9 @@
             {
                 "id": "what-is-code-banner",
                 "image": "/images/headerImages/codingBanner1.png",
-                "text": "So what exactly is Code?"
+                "text": "So what exactly is Code?",
+                "desc": "Learn the fundamentals of coding, and how it is used to create some of the most powerful machines , applications and robots in the world!",
+                "colour": "linear-gradient(90deg,rgb(11,146,191),rgb(42,181,227))"
             }
         ],
         "content2": [
@@ -108,7 +110,9 @@
             {
                 "id": "types-of-languages",
                 "image": "/images/headerImages/codingBanner1.png",
-                "text": "What kind of languages are there?"
+                "text": "What kind of languages are there?",
+                "desc": "That's right, there are thousands of programming languages in existence! Now it's time to learn about a few of them and what they do!",
+                "colour": "linear-gradient(90deg,rgb(11,146,191),rgb(42,181,227))"
             }
         ],
         "content3": [
@@ -334,6 +338,7 @@
             {
                 "id": "codingIntroductionQuiz1",
                 "name": "Coding Intro Quiz",
+                "quizColour": "linear-gradient(90deg,rgb(11,146,191),rgb(42,181,227))",
                 "questions": [
                     {
                         "text": "Which of these is a programming languages?",
@@ -488,11 +493,6 @@
                         "link": "https://instituteofcoding.open.ac.uk/",
                         "text": "University",
                         "desc": "Ready for the big step? Find out what university has to offer you!"
-                    },
-                    {
-                        "link": "https://medium.com/hackers-at-cambridge/self-learn-coding-how-to-get-started-and-learning-tips-8ab4245de8f3",
-                        "text": "Self Teaching",
-                        "desc": "Fancy homeschooling yourself? Take a look at some great ways to learn at home"
                     },
                     {
                         "link": "https://www.forbes.com/sites/forbestechcouncil/2017/10/18/considering-a-new-job-here-are-10-industries-in-need-of-programmers/#52cc15b05fe3",

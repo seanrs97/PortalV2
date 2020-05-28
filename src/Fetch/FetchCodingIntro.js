@@ -14,7 +14,7 @@ class FetchCodingIntro extends React.Component {
         }
     }
     async componentDidMount(){
-        const codingIntro = await (await (fetch("/jsonFiles/codingIntro.json"))).json();
+        const codingIntro = await (await (fetch("/codingIntro.json"))).json();
 
         this.setState({
             json: codingIntro[0],
@@ -52,6 +52,7 @@ class FetchCodingIntro extends React.Component {
                             bannerTwo = {this.state.bannerTwo}
 
                             quiz = {this.state.quiz}
+                            quizColour = "linear-gradient(90deg,rgb(11,146,191),rgb(42,181,227))"
                             
                             navImage = {this.state.json.image}
                             navigation = {this.state.jsonNavigation}

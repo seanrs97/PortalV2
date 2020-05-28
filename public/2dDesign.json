@@ -1,0 +1,33 @@
+[
+    {
+        "id": "2d-design",
+        "name": "2D Design",
+        "headerColour": "linear-gradient(90deg,rgb(251,24,66),rgb(208,0,86))",
+        "description": "Artificial intelligence is shaping the future! don't fall behind!",
+        "image": "/images/headerImages/Banner6.png",
+        "imageTab": "/images/headerImages/Banner6.png",
+        "imageMob": "/images/headerImages/Banner6.png",
+        "buttons": [
+            {
+                "id": "2d-introduction",
+                "image": "/images/buttonImages/2DIntro.svg",
+                "text": "The perfect place to start for people with little to no knowledge on 2D design"
+            },
+            {
+                "id": "2d-animation",
+                "image": "/images/buttonImages/2DAnimation.svg",
+                "text": "What better place to start than animation? one of the most fun topics of 2D and something that everyone can enjoy"
+            },
+            {
+                "id": "2d-software",
+                "image": "/images/buttonImages/2DSoftware.svg",
+                "text": "Ready to start your own designs? let's get familiar with the software first!"
+            },
+            {
+                "id": "2d-principles",
+                "image": "/images/buttonImages/2DPrinciples.svg",
+                "text": "Think you understand 2D Design? Think again! learn about the principles here!"
+            }
+        ]
+    }
+]

@@ -9,7 +9,7 @@ class ExampleFetch extends React.Component {
         }
     }
     async componentDidMount(){
-        const fetchJSON = await (await (fetch(`/jsonFiles/${this.props.jsonName}.json`))).json();
+        const fetchJSON = await (await (fetch(`/${this.props.jsonName}.json`))).json();
         this.setState({
             jsonData: fetchJSON[0],
             jsonDataId: fetchJSON[0].id,
